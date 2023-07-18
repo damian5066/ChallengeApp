@@ -1,70 +1,72 @@
-﻿int number = 123382993;
-string numberToString = number.ToString();
-char[] letters = numberToString.ToArray();
+﻿
+Employee E1 = new Employee("Marek", "Chodny", 20);
+Employee E2 = new Employee("Julia", "Mak", 33);
+Employee E3 = new Employee("Damian", "Sokolik", 35);
+E1.dodajWynik(2);
+E1.dodajWynik(4);
+E1.dodajWynik(6);
+E1.dodajWynik(8);
+E1.dodajWynik(10);
 
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+E2.dodajWynik(2);
+E2.dodajWynik(2);
+E2.dodajWynik(2);
+E2.dodajWynik(2);
+E2.dodajWynik(2);
 
-foreach (char letter in letters)
+E3.dodajWynik(9);
+E3.dodajWynik(9);
+E3.dodajWynik(9);
+E3.dodajWynik(9);
+E3.dodajWynik(9);
+
+var sumaE1 = E1.Suma;
+var sumaE2 = E2.Suma;
+var sumaE3 = E3.Suma;
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
+    E1,E2,E3
+};
+
+int maxWynik = -1;
+Employee EwithMaxWynik = null;
+
+foreach (var emp in employees)
+{
+    if (emp.Suma > maxWynik)
     {
-        counter0++;
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else
-    {
-        counter9++;
+        EwithMaxWynik = emp;
     }
 }
-Console.WriteLine("Ilość znaków w liczbie " + number + ":");
-Console.WriteLine("0 => " + counter0);
-Console.WriteLine("1 => " + counter1);
-Console.WriteLine("2 => " + counter2);
-Console.WriteLine("3 => " + counter3);
-Console.WriteLine("4 => " + counter4);
-Console.WriteLine("5 => " + counter5);
-Console.WriteLine("6 => " + counter6);
-Console.WriteLine("7 => " + counter7);
-Console.WriteLine("8 => " + counter8);
-Console.WriteLine("9 => " + counter9);
+Console.WriteLine(EwithMaxWynik.Imie + " " + EwithMaxWynik.Nazwisko + " " + EwithMaxWynik.Wiek + "lat, Uzyskany wynik: " + EwithMaxWynik.Suma);
+
+class Employee
+{
+    private List<int> punktyPracownika = new List<int>();
+
+    public Employee(string imie, string nazwisko, int wiek)
+    {
+        this.Imie = imie;
+        this.Nazwisko = nazwisko;
+        this.Wiek = wiek;
+    }
+
+    public string Imie { get; private set; }
+    public string Nazwisko { get; private set; }
+    public int Wiek { get; private set; }
+
+    public int Suma
+    {
+        get
+        {
+            return this.punktyPracownika.Sum();
+        }
+    }
+
+    public void dodajWynik(int punkty)
+    {
+        this.punktyPracownika.Add(punkty);
+    }
+}
 
