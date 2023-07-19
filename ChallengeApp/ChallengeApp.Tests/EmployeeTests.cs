@@ -5,41 +5,39 @@ namespace ChallengeApp.Tests
     {
 
         [Test]
-        public void WhenEmployeeCollectScores_ShouldReturnCorrectResult()
+        public void WhenEmployeeCollectGrades_ShouldReturnCorrectStatistics()
         {
             //arrange
 
             var employee = new Employee("Damian", "Brzytwa", 20);
-            employee.addScore(5);
-            employee.addScore(10);
-            employee.addScore(1);
-            employee.addScore(7);
+            var employee2 = new Employee("Ola", "Oko", 23);
+
+            employee.addGrade(5);
+            employee.addGrade(10);
+            employee.addGrade(2);
+            employee.addGrade(3);
+
+            employee2.addGrade(9);
+            employee2.addGrade(8);
+            employee2.addGrade(7);
+            employee2.addGrade(10);
 
             //act
-            var result = employee.Sum;
+            var statistics = employee.GetStatistics();
+
+            var statistics2 = employee2.GetStatistics();
+
 
             //assert
-            Assert.AreEqual(23, result);
+            Assert.AreEqual(5, statistics.Average);
+            Assert.AreEqual(10, statistics.Max);
+            Assert.AreEqual(2, statistics.Min);
+
+            Assert.AreEqual(8.5, statistics2.Average);
+            Assert.AreEqual(10, statistics2.Max);
+            Assert.AreEqual(7, statistics2.Min);
         }
-    
-
-
-    [Test]
-    public void WhenEmployeeSubtractScores_ShouldReturnCorrectResult()
-    {
-        //arrange
-
-        var employee = new Employee("Damian", "Bajka", 20);
-        employee.addScore(5);
-        employee.addScore(10);
-        employee.subtractScore(5);
-        employee.subtractScore(10);
-
-        //act
-        var result = employee.Sum;
-
-        //assert
-        Assert.AreEqual(0, result);
     }
 }
-}
+
+
