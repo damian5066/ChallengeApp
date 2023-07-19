@@ -1,72 +1,69 @@
 ﻿
-Employee E1 = new Employee("Marek", "Chodny", 20);
-Employee E2 = new Employee("Julia", "Mak", 33);
-Employee E3 = new Employee("Damian", "Sokolik", 35);
-E1.dodajWynik(2);
-E1.dodajWynik(4);
-E1.dodajWynik(6);
-E1.dodajWynik(8);
-E1.dodajWynik(10);
+Employee Employee1 = new Employee("Marek", "Chodny", 20); 
+Employee Employee2 = new Employee("Julia", "Mak", 33);
+Employee Employee3 = new Employee("Damian", "Sokolik", 35);
+Employee1.addScore(2);
+Employee1.addScore(4);
+Employee1.addScore(6);
+Employee1.addScore(7);
+Employee1.addScore(9);
 
-E2.dodajWynik(2);
-E2.dodajWynik(2);
-E2.dodajWynik(2);
-E2.dodajWynik(2);
-E2.dodajWynik(2);
+Employee2.addScore(2);
+Employee2.addScore(2);
+Employee2.addScore(2);
+Employee2.addScore(2);
+Employee2.addScore(2);
 
-E3.dodajWynik(9);
-E3.dodajWynik(9);
-E3.dodajWynik(9);
-E3.dodajWynik(9);
-E3.dodajWynik(9);
+Employee3.addScore(9);
+Employee3.addScore(9);
+Employee3.addScore(9);
+Employee3.addScore(8);
+Employee3.addScore(1);
 
-var sumaE1 = E1.Suma;
-var sumaE2 = E2.Suma;
-var sumaE3 = E3.Suma;
 
 List<Employee> employees = new List<Employee>()
 {
-    E1,E2,E3
+    Employee1, Employee2, Employee3
 };
 
-int maxWynik = -1;
-Employee EwithMaxWynik = null;
+int maxScore = -1;
+Employee EwithMaxScore = null;
 
-foreach (var emp in employees)
+foreach (var employee in employees)
 {
-    if (emp.Suma > maxWynik)
+    if (employee.Sum > maxScore)
     {
-        EwithMaxWynik = emp;
+        EwithMaxScore = employee;
     }
 }
-Console.WriteLine(EwithMaxWynik.Imie + " " + EwithMaxWynik.Nazwisko + " " + EwithMaxWynik.Wiek + "lat, Uzyskany wynik: " + EwithMaxWynik.Suma);
+Console.WriteLine(EwithMaxScore.Name + " " + EwithMaxScore.Surname + " " + EwithMaxScore.Age + "lat, Uzyskany wynik: " + EwithMaxScore.Sum);
 
 class Employee
 {
-    private List<int> punktyPracownika = new List<int>();
+    private List<int> score = new List<int>();
 
-    public Employee(string imie, string nazwisko, int wiek)
+    public Employee(string name, string surname, int age)
     {
-        this.Imie = imie;
-        this.Nazwisko = nazwisko;
-        this.Wiek = wiek;
+        this.Name = name;
+        this.Surname = surname;
+        this.Age = age;
     }
 
-    public string Imie { get; private set; }
-    public string Nazwisko { get; private set; }
-    public int Wiek { get; private set; }
+    public string Name { get; private set; }
+    public string Surname { get; private set; }
+    public int Age { get; private set; }
 
-    public int Suma
+    public int Sum
     {
         get
         {
-            return this.punktyPracownika.Sum();
+            return this.score.Sum();
         }
     }
 
-    public void dodajWynik(int punkty)
+    public void addScore(int points)
     {
-        this.punktyPracownika.Add(punkty);
+        this.score.Add(points);
     }
 }
 
