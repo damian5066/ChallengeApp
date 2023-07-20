@@ -2,11 +2,11 @@
 
 Employee employee1 = new Employee("Marek", "Chodny", 20); 
 
-employee1.addGrade(2);
-employee1.addGrade(4);
-employee1.addGrade(6);
-employee1.addGrade(7);
-employee1.addGrade(9);
+employee1.addGrade(2.65532);
+employee1.addGrade("4");
+employee1.addGrade("600");
+employee1.addGrade("Polks");
+employee1.addGrade("9");
 
 var statistics = employee1.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average:N2}");
