@@ -17,10 +17,10 @@ namespace ChallengeApp.Tests
             employee.addGrade(2);
             employee.addGrade(3);
 
-            employee2.addGrade(9);
-            employee2.addGrade(8);
-            employee2.addGrade(7);
-            employee2.addGrade(10);
+            employee2.addGrade(90);
+            employee2.addGrade(80);
+            employee2.addGrade(70);
+            employee2.addGrade(100);
 
             //act
             var statistics = employee.GetStatistics();
@@ -32,10 +32,13 @@ namespace ChallengeApp.Tests
             Assert.AreEqual(5, statistics.Average);
             Assert.AreEqual(10, statistics.Max);
             Assert.AreEqual(2, statistics.Min);
+            Assert.AreEqual('E', statistics.averageLetter);
 
-            Assert.AreEqual(8.5, statistics2.Average);
-            Assert.AreEqual(10, statistics2.Max);
-            Assert.AreEqual(7, statistics2.Min);
+            Assert.AreEqual(85, statistics2.Average);
+            Assert.AreEqual(100, statistics2.Max);
+            Assert.AreEqual(70, statistics2.Min);
+            Assert.AreEqual('A', statistics2.averageLetter);
+
         }
     }
 }
