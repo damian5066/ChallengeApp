@@ -27,11 +27,11 @@ while (true)
     {
         break;
     }
-    employee.addGrade(input);
+    employee.AddGrade(input);
 }
 
 var statistics = employee.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"AverageGrade: {statistics.averageLetter}");
+Console.WriteLine($"AverageGrade: {statistics.AverageLetter}");

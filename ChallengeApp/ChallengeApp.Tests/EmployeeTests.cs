@@ -12,15 +12,15 @@ namespace ChallengeApp.Tests
             var employee = new Employee("Damian", "Brzytwa", 20);
             var employee2 = new Employee("Ola", "Oko", 23);
 
-            employee.addGrade(5);
-            employee.addGrade(10);
-            employee.addGrade(2);
-            employee.addGrade(3);
+            employee.AddGrade(5);
+            employee.AddGrade(10);
+            employee.AddGrade(2);
+            employee.AddGrade(3);
 
-            employee2.addGrade(90);
-            employee2.addGrade(80);
-            employee2.addGrade(70);
-            employee2.addGrade(100);
+            employee2.AddGrade(90);
+            employee2.AddGrade(80);
+            employee2.AddGrade(70);
+            employee2.AddGrade(100);
 
             //act
             var statistics = employee.GetStatistics();

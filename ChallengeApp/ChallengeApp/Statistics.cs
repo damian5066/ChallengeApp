@@ -8,6 +8,6 @@ namespace ChallengeApp
 
         public float Average { get; set; }
 
-        public char averageLetter { get; set; }
+        public char AverageLetter { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace ChallengeApp
         public string Surname { get; private set; }
         public int Age { get; private set; }
 
-        public void addGrade(float grade)
+        public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -30,22 +30,22 @@ namespace ChallengeApp
             }
         }
 
-        public void addGrade(double grade)
+        public void AddGrade(double grade)
         {
             var doubleToFloat = (float)Math.Round(grade, 2);
-            this.addGrade(doubleToFloat);
+            this.AddGrade(doubleToFloat);
         }
-        public void addGrade(long grade)
+        public void AddGrade(long grade)
         {
             var longToFloat = (float)grade;
-            this.addGrade(longToFloat);
+            this.AddGrade(longToFloat);
         }
 
-        public void addGrade(string grade)
+        public void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
-                this.addGrade(result);
+                this.AddGrade(result);
             }
             else
             {
@@ -54,29 +54,29 @@ namespace ChallengeApp
 
         }
 
-        public void addGrade(char grade)
+        public void AddGrade(char grade)
         {
             switch (grade)
             {
                 case 'A':
                 case 'a':
-                    this.addGrade(100);
+                    this.AddGrade(100);
                     break;
                 case 'B':
                 case 'b':
-                    this.addGrade(80);
+                    this.AddGrade(80);
                     break;
                 case 'C':
                 case 'c':
-                    this.addGrade(60);
+                    this.AddGrade(60);
                     break;
                 case 'D':
                 case 'd':
-                    this.addGrade(40);
+                    this.AddGrade(40);
                     break;
                 case 'E':
                 case 'e':
-                    this.addGrade(20);
+                    this.AddGrade(20);
                     break;
                 default:
                     Console.WriteLine("Wrong Letter");
@@ -103,19 +103,19 @@ namespace ChallengeApp
             switch(statistics.Average)
             {
                 case var average when average >= 80:
-                    statistics.averageLetter = 'A';
+                    statistics.AverageLetter = 'A';
                     break;
                 case var average when average >= 60:
-                    statistics.averageLetter = 'B';
+                    statistics.AverageLetter = 'B';
                     break;
                 case var average when average >= 40:
-                    statistics.averageLetter = 'C';
+                    statistics.AverageLetter = 'C';
                     break;
                 case var average when average >= 20:
-                    statistics.averageLetter = 'D';
+                    statistics.AverageLetter = 'D';
                     break;
                 default:
-                    statistics.averageLetter = 'E';
+                    statistics.AverageLetter = 'E';
                     break;
             }
             return statistics;
