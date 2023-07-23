@@ -19,15 +19,40 @@ Console.WriteLine("===========================================");
 Console.WriteLine();
 var employee = new Employee("Adam", "Hanha", 24);
 
+
+//try
+//{
+//    Employee emp = null;
+//    var name = emp.Name;
+
+//}
+//catch (Exception exception)
+//{
+//    Console.WriteLine(exception.Message);
+//}
+//finally
+//{
+//    Console.WriteLine("Finally here");
+//}
+
 while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika: ");
     var input = Console.ReadLine();
-    if(input == "q")
+    if (input == "q")
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Exception catched {ex.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();

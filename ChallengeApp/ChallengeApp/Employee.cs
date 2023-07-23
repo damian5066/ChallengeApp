@@ -1,10 +1,11 @@
-﻿
-using System.Diagnostics;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class Employee
     {
+        //private readonly char sex = 'M';
+        //private const double PI = 3,14;
+
+
         private List<float> grades = new List<float>();
 
         public Employee(string name, string surname, int age)
@@ -26,7 +27,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Invalid grade value");
+                throw new Exception("Invalid grade value");
             }
         }
 
@@ -49,7 +50,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");
             }
 
         }
@@ -79,8 +80,7 @@ namespace ChallengeApp
                     this.AddGrade(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
+                    throw new Exception("Wrong letter");
             }
         }
 
@@ -100,7 +100,7 @@ namespace ChallengeApp
             }
             statistics.Average = statistics.Average / this.grades.Count;
 
-            switch(statistics.Average)
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';

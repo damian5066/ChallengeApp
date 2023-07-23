@@ -32,12 +32,12 @@ namespace ChallengeApp.Tests
             Assert.AreEqual(5, statistics.Average);
             Assert.AreEqual(10, statistics.Max);
             Assert.AreEqual(2, statistics.Min);
-            Assert.AreEqual('E', statistics.averageLetter);
+            Assert.AreEqual('E', statistics.AverageLetter);
 
             Assert.AreEqual(85, statistics2.Average);
             Assert.AreEqual(100, statistics2.Max);
             Assert.AreEqual(70, statistics2.Min);
-            Assert.AreEqual('A', statistics2.averageLetter);
+            Assert.AreEqual('A', statistics2.AverageLetter);
 
         }
     }
