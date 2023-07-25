@@ -2,6 +2,7 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+       
         private List<float> grades = new List<float>();
 
         public EmployeeInMemory(string name, string surname, int age, char sex)
@@ -15,6 +16,7 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                AddGradeEvent();
             }
             else
             {

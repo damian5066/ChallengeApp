@@ -16,6 +16,7 @@
                 if (grade >= 0 && grade <= 100)
                 {
                     writer.WriteLine(grade);
+                    AddGradeEvent();
                 }
                 else
                 {

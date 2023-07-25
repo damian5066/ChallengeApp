@@ -2,6 +2,16 @@
 {
     public abstract class EmployeeBase : IEmployee
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+        public event GradeAddedDelegate GradeAdded;
+        public void AddGradeEvent()
+        {
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs());
+            }
+        }
 
         public EmployeeBase(string name, string surname, int age, char sex)
         {
@@ -24,6 +34,7 @@
         public abstract void AddGrade(string grade);
 
         public abstract Statistics GetStatistics();
+
 
     }
 }
