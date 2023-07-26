@@ -4,6 +4,8 @@
     {
 
         private const string fileName = "grades.txt";
+
+        public override event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, int age, char sex)
             : base(name, surname, age, sex)
         {
@@ -11,17 +13,20 @@
 
         public override void AddGrade(float grade)
         {
-            using (var writer = File.AppendText(fileName))
+            if (grade >= 0 && grade <= 100)
             {
-                if (grade >= 0 && grade <= 100)
+                using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
-                    AddGradeEvent();
                 }
-                else
+                if (GradeAdded != null)
                 {
-                    throw new Exception("Invalid grade value");
+                    GradeAdded(this, new EventArgs());
                 }
+            }
+            else
+            {
+                throw new Exception("Invalid grade value");
             }
         }
 
@@ -87,9 +92,12 @@
 
         public override Statistics GetStatistics()
         {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
+            var statistics = new Statistics();
+            foreach(var grades in this.ReadGradesFromFile())
+            {
+                statistics.AddGrade(grades);
+            }
+            return statistics;
 
         }
         private List<float> ReadGradesFromFile()
@@ -111,46 +119,48 @@
             return grades;
         }
 
-        private Statistics CountStatistics(List<float> grades)
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
+        //private Statistics CountStatistics(List<float> grades)
+        //{
+        //    var statistics = new Statistics();
+        //    statistics.Average = 0;
+        //    statistics.Max = float.MinValue;
+        //    statistics.Min = float.MaxValue;
 
-            foreach (var grade in grades)
-            {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
+        //    foreach (var grade in grades)
+        //    {
+        //        statistics.Max = Math.Max(statistics.Max, grade);
+        //        statistics.Min = Math.Min(statistics.Min, grade);
+        //        statistics.Average += grade;
 
-            }
-            statistics.Average = (statistics.Average) / grades.Count;
-            statistics.Average = (float)Math.Round(statistics.Average,2);
-            
-            
+        //    }
+        //    statistics.Average = (statistics.Average) / grades.Count;
+        //    statistics.Average = (float)Math.Round(statistics.Average, 2);
 
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-            return statistics;
-        }
+
+
+        //    switch (statistics.Average)
+        //    {
+        //        case var average when average >= 80:
+        //            statistics.AverageLetter = 'A';
+        //            break;
+        //        case var average when average >= 60:
+        //            statistics.AverageLetter = 'B';
+        //            break;
+        //        case var average when average >= 40:
+        //            statistics.AverageLetter = 'C';
+        //            break;
+        //        case var average when average >= 20:
+        //            statistics.AverageLetter = 'D';
+        //            break;
+        //        default:
+        //            statistics.AverageLetter = 'E';
+        //            break;
+        //    }
+        //    return statistics;
+        //}
     }
-
 }
+
+
+
 
